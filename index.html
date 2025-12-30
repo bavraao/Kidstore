@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kids Store</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Tajawal', sans-serif;
+    }
+
+    body {
+      background: #f5f5f5;
+      overflow-x: hidden;
+    }
+
+    /* ---------------- SPLASH SCREEN ---------------- */
+
+    #splash {
+      position: fixed;
+      inset: 0;
+      background: url("https://i.postimg.cc/HkjBBKMw/lines.jpg") center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      animation: fadeOut 1s ease-out forwards;
+      animation-delay: 2.8s; 
+    }
+.special-toy {
+  display: inline-block;
+  background: none;
+  color: #1360c5;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 6px;
+
+  position: relative;
+  top: 5px;   /* نزليها تحت */
+}
+
+.card h3 {
+  position: relative;
+  top: -8px;     /* طلّعي الاسم لفوق */
+  margin-bottom: 0;
+}
+
+
+
+    #splash img {
+      width: 820px;
+      animation: float 2s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
+    /* ---------------- MAIN WEBSITE CONTENT ---------------- */
+
+    #mainContent {
+      opacity: 0;
+      transition: 0.8s;
+    }
+
+    #mainContent.visible {
+      opacity: 1;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- SPLASH SCREEN -->
+  <div id="splash">
+    <img src="https://i.postimg.cc/MZLqctrC/Whats-App-Image-2025-12-13-at-10-46-11-PM-artguru-(1).png" alt="logo">
+  </div>
+
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kids Store</title>
+<style>
+:root{
+--primary:#f69eb5;
+--secondary:#63a2c4;
+--accent:#768ebd;
+--text:#222;
+--muted:#666;
+--bg:#e1fffd;
+--card:#8fd2d8;
+--shadow:0 8px 24px rgba(0,0,0,0.08);
+--radius:16px;
+}
+*{box-sizing:border-box;}
+body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:"Tajawal",sans-serif;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+header{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,var(--secondary),var(--primary));color:#83d7e0;box-shadow:var(--shadow);}
+.nav{max-width:1100px;margin:auto;display:flex;align-items:center;gap:16px;padding:16px;}
+.brand{display:flex;align-items:center;gap:12px;}
+.brand .title{font-weight:800;font-size:1.25rem;letter-spacing:.5px;}
+.search-bar{margin-inline-start:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+.search-bar input,.search-bar select{border:none;border-radius:999px;padding:10px 14px;outline:none;}
+.btn{background:#a9d4cf;color:#333;border:none;border-radius:999px;padding:10px 16px;cursor:pointer;font-weight:700;}
+.btn:hover{opacity:.9;}
+.cart-btn{display:flex;align-items:center;gap:8px;background:var(--accent);}
+.badge{background:#a5cbcb;color:#333;padding:2px 8px;border-radius:999px;font-size:.8rem;font-weight:700;}
+.hero{max-width:1100px;margin:12px auto 0;padding:16px;}
+.hero-banner{background:#aed8da;border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;display:grid;grid-template-columns:1.1fr .9fr;gap:16px;align-items:center;}
+.hero h1{margin:0 0 8px;font-size:1.8rem;color:#63a2c4;}
+.hero p{margin:0;color:var(--muted);}
+.hero .cta{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;}
+.filters{max-width:1100px;margin:16px auto;padding:0 16px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.chip{background:#caebf0;border:2px solid transparent;border-radius:999px;padding:8px 14px;cursor:pointer;box-shadow:var(--shadow);font-weight:700;}
+.chip.active{border-color:var(--secondary);color:var(--secondary);}
+.grid{max-width:1100px;margin:8px auto 32px;padding:0 16px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+@media(max-width:992px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:768px){.grid{grid-template-columns:repeat(2,1fr)} .hero-banner{grid-template-columns:1fr}}
+@media(max-width:480px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:12px;display:flex;flex-direction:column;position:relative;}
+.thumb{background:linear-gradient(135deg,#ffe,#fef);border-radius:12px;overflow:hidden;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;}
+.item-img{width:100%;height:100%;object-fit:cover;display:block;}
+.card h3{margin:10px 0 6px;font-size:1.1rem;color:#222;}
+.card .meta{color:var(--muted);font-size:.9rem;margin-bottom:6px;}
+.Price-row{display:flex;align-items:center;gap:8px;margin-top:auto;}
+.old-price{ text-decoration:line-through;color:#777;margin-inline-start:8px;font-size:0.95rem }
+.new-price{ color:red;font-weight:900;font-size:1rem;margin-inline-start:6px }
+.add{margin-inline-start:auto;background:var(--secondary);color:#004;border:none;border-radius:10px;padding:8px 12px;font-weight:800;cursor:pointer;}
+.add:hover{opacity:.9;}
+.see-more {
+  color: #965085; 
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 14px;
+}
+.full-text {
+  display: none;   
+}
+
+.wishlist-btn{position:absolute;top:12px;left:12px;background:transparent;border:none;font-size:1.6rem;color:rgba(0,0,0,0.25);cursor:pointer;transition:color .2s;}
+.wishlist-btn.active{color:red;}
+.drawer{position:fixed;top:0;height:100vh;width:360px;max-width:92vw;background:#fff;box-shadow:var(--shadow);transform:translateX(100%);transition:.3s ease;z-index:300;display:flex;flex-direction:column;right:0;}
+.drawer.open{transform:translateX(0);}
+.drawer-header{display:flex;align-items:center;justify-content:space-between;padding:16px;border-bottom:1px solid #eee;}
+.drawer-body{padding:12px;display:flex;flex-direction:column;gap:8px;height:calc(100% - 140px);overflow:auto;}
+.drawer-item{display:flex;gap:10px;align-items:center;border:1px solid #f1f1f1;border-radius:12px;padding:8px;}
+.drawer-item img{width:64px;height:64px;object-fit:cover;border-radius:8px;}
+.drawer-footer{padding:16px;border-top:1px solid #eee;}
+.total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+.checkout{width:100%;background:var(--primary);color:#fff;border:none;border-radius:12px;padding:12px;font-weight:800;cursor:pointer;}
+.remove-btn{background:#ff4d4d;color:#fff;border:none;padding:6px 10px;border-radius:8px;font-weight:700;cursor:pointer;transition:.2s;margin-inline-start:8px;}
+.remove-btn:hover{opacity:.8;}
+.qty-btn{background:#63a2c4;color:#fff;border:none;padding:4px 10px;border-radius:8px;font-weight:700;cursor:pointer;transition:.2s;}
+.qty-btn:hover{opacity:.8;}
+.qty-display{margin:0 8px;font-weight:700;}
+footer{background:#fff;box-shadow:var(--shadow);margin-top:32px;}
+.footer-inner{max-width:1100px;margin:auto;padding:16px;display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.foot-brand{display:flex;align-items:center;gap:10px;}
+.foot-links{display:flex;gap:12px;flex-wrap:wrap;color:var(--muted);}
+
+</style>
+</head>
+<body>
+
+<header>
+<nav class="nav">
+<a class="brand" href="#"><div class="title">Kids Shop</div></a>
+<div class="search-bar">
+<input id="search" type="text" placeholder="Search">
+<select id="Category">
+<option value="All">All Categories</option>
+<option value="Educational toys">Educational toys</option>
+<option value="Creative toys">Creative toys</option>
+<option value="Motion toys">Motion toys</option>
+<option value="Electronical toys">Electronical toys</option>
+<option value="Plush toys">Plush toys</option>
+<option value="Winter toys">Winter toys</option>
+</select>
+<button class="btn cart-btn" id="openCart">Cart <span class="badge" id="CartCount">0</span></button>
+<button class="btn cart-btn" id="openWishlist">♡ <span class="badge" id="WishlistCount">0</span></button>
+</div>
+</nav>
+</header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-banner">
+      <div>
+        <h1>Fun games that nurture imagination and learning</h1>
+        <p><b>Choose from our selected collection of Educational and Creative games… and more, suitable for children</b></p>
+        
+        <div class="cta">
+          <button class="btn" id="exploreBtn"><b style="color: cornflowerblue;">Explore Now</b></button>
+          <button class="btn" id="dealBtn"><b style="color: cornflowerblue;">Discounts</b></button>
+        </div>
+        <br>
+        <br>
+        <p style="color: #004;"><b>❀•°•♕ The owners ♕•°•❀: Maryam Ahmed / Maryam Ramy / Rahma Amr 
+          / Hannen Nasr / Darine Mohamed /Hala Amr
+
+
+
+
+
+        </b></p>
+
+
+
+
+
+      </div>
+      <div class="thumb" aria-hidden="true">
+        <div><img src="https://i.postimg.cc/6TxtYRjY/fywnkt.jpg" alt="cute"></div>
+      </div>
+    </div>
+  </section>
+
+
+<section class="filters">
+<button class="chip active" data-filter="All">All</button>
+<button class="chip" data-filter="Educational toys">Educational toys</button>
+<button class="chip" data-filter="Creative toys">Creative toys</button>
+<button class="chip" data-filter="Motion toys">Motion toys</button>
+<button class="chip" data-filter="Electronical toys">Electronical toys</button>
+<button class="chip" data-filter="Plush toys">Plush toys</button>
+<button class="chip" data-filter="Winter toys">Winter toys</button>
+</section>
+
+<main class="grid" id="productGrid"></main>
+
+<!-- Cart Drawer -->
+<aside id="cartDrawer" class="drawer" aria-hidden="true">
+<div class="drawer-header">
+<strong>Cart</strong>
+<button id="closeCart" class="btn" style="background:red;color:#fff;">Close</button>
+</div>
+<div class="drawer-body" id="cartItems"></div>
+<div class="drawer-footer">
+<div class="total-row"><span>Total:</span><strong id="CartTotal">0 SAR</strong></div>
+<button class="checkout" id="checkoutBtn">Checkout</button>
+</div>
+</aside>
+
+<!-- Wishlist Drawer -->
+<aside id="wishlistDrawer" class="drawer" aria-hidden="true">
+<div class="drawer-header">
+<strong>Wishlist</strong>
+<button id="closeWishlist" class="btn" style="background:red;color:#fff;">Close</button>
+</div>
+<div class="drawer-body" id="wishlistItems"></div>
+</aside>
+<!-- Circular Premium Button -->
+<button class="premium-circle" onclick="openSignup()">👑</button>
+
+<!-- Signup Modal -->
+<div id="signupModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeSignup()">&times;</span>
+    <h2>Create Account</h2>
+    <form onsubmit="submitSignup(event)">
+      <label> : Name  </label>
+      <input type="text" required><br><br>
+      
+      <label> : Email </label>
+      <input type="email" ><br><br>
+      
+      <label> : Password </label>
+      <input type="password" required><br><br>
+      
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+<style>
+  /* Circular button */
+  .premium-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #ff9800, #f44336);
+    color: #fff;
+    font-size: 22px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    transition: transform 0.2s ease;
+  }
+  .premium-circle:hover { transform: scale(1.1); }
+
+  /* Modal */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+  }
+  .modal-content {
+    background: #fff;
+    margin: 8% auto;
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    text-align: center;
+    color: #000; /* black text */
+  }
+  .close {
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  form input {
+    width: 90%;
+    padding: 10px;
+    margin: 8px 0;
+    font-size: 16px;
+  }
+  form button {
+    background: #f44336;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    margin-top: 15px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+  form button:hover { background: #d32f2f; }
+</style>
+
+<script>
+  let accountCreated = false;
+
+  function openSignup() {
+    document.getElementById("signupModal").style.display = "block";
+  }
+
+  function closeSignup() {
+    document.getElementById("signupModal").style.display = "none";
+  }
+
+  function submitSignup(event) {
+    event.preventDefault(); // prevent page reload
+    if (!accountCreated) {
+      accountCreated = true;
+      alert("Account created successfully ✅");
+      closeSignup();
+    } else {
+      alert("You have already created an account ✅");
+      closeSignup();
+    }
+  }
+
+  // Close modal when clicking outside
+  window.onclick = function(event) {
+    const modal = document.getElementById("signupModal");
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+
+<script>
+  function openSignup() {
+    document.getElementById("signupModal").style.display = "block";
+  }
+  function closeSignup() {
+    document.getElementById("signupModal").style.display = "none";
+  }
+  window.onclick = function(event) {
+    const modal = document.getElementById("signupModal");
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+<footer>
+<div class="footer-inner">
+<div class="foot-brand"><strong>Kids Shop</strong></div>
+<div class="foot-links">
+<a href="#">Privacy Policy</a>
+<a href="#">Shipping and Returns</a>
+<a href="#">Contact with Us</a>
+</div>
+</div>
+</footer>
+
+<script>
+// PRODUCTS
+  
+  // Sample products
+  
+  const PRODUCTS = [
+  
+    {id:1, name:"A cute, soft, pink rabbit that makes a wonderful gift.",cartName:"Pink Rabbit" , Category:"Plush toys", Price:27.5,oldPrice:55, img:"https://i.postimg.cc/JrbCPrf2/IMG-20251204-WA0075.jpg", Age:"+6m"},
+  
+    {id:2, name:"Elec - Smart Interactive Robot Pet Toys | Abundant Emotions, Miniature Idle Animation | Unique and Cute Office Companion Decor for Kids, Girls, and Boys.",cartName:"Robot" , Category:"Electronical toys", Price:77.50,oldPrice:155, img:"https://m.media-amazon.com/images/I/61m0SZMyRzL.jpg", Age:"+6"},
+  
+       {id:3, name:"A fun toy used to relieve anxiety and stress. It resembles different shapes and comes in different colors too. Suitable for all ages and can be given as a gift.",cartName:"Colored Pop its" , Category:"Creative toys", Price:12.5,oldPrice:25, img:"https://i.postimg.cc/bwGmY2RZ/pop-it.png", Age:"+1"},
+  
+    {id:4, name:"A remote-controlled helicopter that comes with batteries, lights up at night, and is available in several colors.",cartName:"Helicopter" , Category:"Electronical toys", Price:12,oldPrice:24, img:"https://m.media-amazon.com/images/I/71+AuBlggmL.jpg", Age:"+3"},
+  
+    {id:5, name:"Beautifully colored clay in various shades, used for sculpting different shapes and suitable for children.", cartName:"Colored Clay" , Category:"Educational toys", Price:10,oldPrice:20, img:"https://m.media-amazon.com/images/I/71UaneAYtKL._AC_SL1500_.jpg", Age:"+3"},
+  
+    {id:6, name:"A Red car that works with a remote control and is suitable for boys (batteries not included).",cartName:"Red Car" , Category:"Electronical toys", Price:38.20,oldPrice:76.37, img:"https://i5.walmartimages.com/seo/Best-Choice-Products-1-24-Officially-Licensed-RC-Lamborghini-Veneno-Sport-Racing-Car-w-2-4GHz-Remote-Control-Red_44fe1f61-951c-4083-8ada-a08554e7168c.62901fadff4dc6b0b9254f7a907ff861.jpeg", Age:"+3"},
+  
+    {id:7, name:"Abacus Games : It consists of bright, attractive colors. The beads are easy to move . Makes learning fun instead of boring.",cartName:"Abacus" , Category:"Educational toys", Price:24.50,oldPrice:49, img:"https://i.postimg.cc/rp7z4s3f/h.png", Age:"+1"},
+  
+    {id:8, name:"Blocks Games beautifully colored, used for building animals, flowers, and more.", cartName:"Colored Blocks" ,Category:"Educational toys", Price:32,oldPrice:63.99, img:"https://i5.walmartimages.com/asr/b5dceaf2-e9a1-4a1e-b664-f479868090cd.9008beb4ef48c2104489085d96db2bd7.jpeg", Age:"+1"},
+  
+   {id:9, name:"Cute blue and pink dolls that appeal to children and are suitable for them.", cartName:"Blue,Pink Dolls" ,Category:"Creative toys" ,Price:40,oldPrice:80, img:"https://i.postimg.cc/1t7mv1BX/baby.jpg", Age:"+6m" },
+  
+    {id:10, name: "Yo yo Game :It's a fun yelloe-colored game used to reduce stress and anxiety.",cartName:"Yo-yo" ,Category:"Motion toys",Price:4.50,oldPrice:9 , img:"https://i.postimg.cc/yNCS9h3z/104476-removebg-preview.png",Age:"+3"},
+  
+    {id:11, name:"Jump rope is a classic, fun activity for kids that can be played almost anywhere and helps improve balance and coordination.",cartName:"Jump Robe" ,Category:"Motion toys",Price:34.50,oldPrice:69,img:"https://i.postimg.cc/T3SHncPS/hh.png", Age:"+3"},
+  
+    {id:12,name:"A small, soft, white stuffed duck with an orange beak and feet.",cartName:"White Duck",Category:"Plush toys",Price:17.5,oldPrice:35 ,img:"https://i.postimg.cc/rp5kK8jR/IMG-20251204-WA0123.jpg",Age :"+6m"},
+  
+    {id:13,name:".A small, soft, yellow duck",cartName:"Yellow Duck" ,Category:"Plush toys",Price:15,oldPrice:30,img:"https://i.postimg.cc/GpvCHcKs/IMG-20251204-WA0124.jpg",Age:"+6m"},
+  
+    {id:14,name:"A medium-sized brown teddy bear stuffed with cotton, used as a toy for children to enjoy.",cartName:"Teddy Bear" ,Category:"Plush toys",Price:25,oldPrice:55,img:"https://i.postimg.cc/C1YV8Wrd/IMG-20251204-WA0127.jpg",Age:"+6m"},
+  
+    {id:15,name:"A small cute penguin with black, white and orange brighty colors.",cartName:"Penguin" ,Category:"Winter toys",Price:9,oldPrice:30,img:"https://i.postimg.cc/vmrTGKzD/Whats-App-Image-2025-12-04-at-2-59-28-PM.jpg",Age:"+6m"},
+  
+    {id:16,name:"A large, soft-to-the-touch brown bear with friendly, simple features.",cartName:"Brown Teddy Bear",Category:"Plush toys",Price:38.5,oldPrice:180.77,img:"https://i.postimg.cc/MTx8Bh3p/IMG-20251204-WA0126.jpg",Age:"+6m"},
+  
+    {id:17,name:"A small, cute angry duck with a yellow pretty colour.",cartName:"Yellow Duck",Category:"Plush toys",Price:20,oldPrice:40,img:"https://i.postimg.cc/sX3tx51G/3e1a39b2ba5d435aa8b788405be33a1c.jpg",Age:"+6m"},
+  
+        {id:18,name:"A soft, yellow chik with bright yellow fur, an orange beak and feet, and shiny black eyes.",cartName:"Yellow Chick",Category:"Plush toys",Price:21,oldPrice:42,img:"https://i.postimg.cc/jjybLsc7/IMG-20251204-WA0125.jpg",Age:"+6m"},
+  
+           {id:19,name:"A Rubik's Cube consists of 26 smaller cubes rotating on a central axis. Each of the six faces has nine stickers in different solid colors.",cartName:"Rubik's Cube",Category:"Educational toys",Price:12,oldPrice:24,img:"https://i.postimg.cc/s2Yk3TfY/78371c77f1a3d7f9ded200c18242ae4e.jpg",Age:"+6"},
+  
+             {id:20,name:"A pink doll is specially designed to be completely safe for newborn babies and older.",cartName:"Pink Doll",Category:"Plush toys",Price:27.5,oldPrice:55,img:"https://i.postimg.cc/hGVBfSst/IMG-20251204-WA0128.jpg",Age:"+6m"},
+  
+                    {id:21,name:"Smart Robotic Pets That Act Like Real Dogs – Touch, Interactive, Walking, Talking, Barking Toys for Girls and Boys.",cartName:"Dog Robot",Category:"Electronical toys",Price:49.5,oldPrice:99,img:"https://i.postimg.cc/dQBsHdH0/Whats-App-Image-2025-12-04-at-2-51-12-PM-jpeg-alrwbwt-alklb.jpg",Age:"+6"},  
+  
+                     {id:22,name:"The Dancing Cactus Toy. A soft toy with lights and beautiful songs that repeat what the person says. It can be given as a gift.",cartName:"The Dancing Cactus",Category:"Creative toys",Price:19.50,oldPrice:39,img:"https://i.postimg.cc/rpL3vmNK/cactus.jpg",Age:"+6m"},   
+  
+                      {id:23,name:"A soft, white snowman, wearing a blue scarf.", cartName:"Snow man",Category:"Winter toys",Price:18.3,oldPrice:61,img:"https://i.postimg.cc/2jBS8zjn/ice.jpg",Age:"+6m"},   
+  
+                      {id:24,name:"A spinning fishing game with realistic fish, featuring fun music and lighting, and helping with hand-eye coordination and focus.",cartName:"Fishing Game",Category:"Creative toys",Price:32.50,oldPrice:65,img:"https://i.postimg.cc/wvt67b5R/Whats-App-Image-2025-12-04-at-3-04-10-PM.jpg",Age:"+3"}, 
+
+                        {id:25,name:"A classic black and white football, suitable for outdoor student sports and for children.",cartName:"Soccer ball",Category:"Motion toys",Price:9.50,oldPrice:19,img:"https://i.postimg.cc/RZH0B4NT/ball.jpg",Age:"+6"},   
+
+                          {id:26,name:"Kitchen set for girls - 49 pieces for toddlers. It's a fun toy for young children.",cartName:"Kids Kitchen",Category:"Creative toys",Price:52,oldPrice:104,img:"https://i.postimg.cc/4x3r6dQK/kitchen.png",Age:"+3"},  
+                            {id:27,name:"Stacking tower Game a colorful educational game for children that is very enjoyable.",cartName:"Stacking Tower",Category:"Educational toys",Price:19.73,oldPrice:39.48,img:"https://i.postimg.cc/c1gMP8d3/duck.png",Age:"+1"}, 
+ {id:28,name:".A red plastic car",cartName:"Small red car",Category:"Motion toys",Price:38.20,oldPrice:79.3,img:"https://i.postimg.cc/C5kS4BQ0/Whats-App-Image-2025-12-04-at-3-00-04-PM.jpg",Age:"+6m"},  
+
+{id:29,name:"A blue and yellow helicopter with a white tow rope.",cartName:"Small helicopter",Category:"Motion toys",Price:8.02,oldPrice:16.04,img:"https://i.postimg.cc/59DpcbwT/20251229-213025-0000.png",Age:"+1"}, 
+
+{id:30, name:"Ice cream cart is designed for children. Learn colors, numbers, and memory skills through interactive play.",cartName:"Ice Cream Cart",Category:"Creative toys",Price:40.50,oldPrice:80,img:"https://i.postimg.cc/L580SQXG/icehg.png",Age:"+3"}, 
+
+{id:31,name:"Xylophone that helps develop fine motor skills and hand-eye coordination, and encourages children to explore sounds, rhythm, and music at an early age.",cartName:"Colored Xylophone",Category:"Creative toys",Price:44.50,oldPrice:89,img:"https://i.postimg.cc/cJRpdF1K/daf3b506c2be040c801e9dbde1be139f.jpg",Age:"+3"}, 
+{id:32,name:"A beautiful Gazelle with brown and white colours.",cartName:"Gazelle",Category:"Winter toys",Price:149,oldPrice:180,img:"https://i.postimg.cc/htNT5Q5f/Gazelle.jpg",Age:"+6m"}, 
+{id:33,name:"Pink Fairy Unicorn Rocking Horse for Toddlers – Stuffed Ride-On Animal Rocker, Easy to Assemble.",cartName:"Pink Rocking Horse",Category:"Motion toys",Price:45,oldPrice:90,img:"https://i.postimg.cc/K8XWr5TL/ll.jpg",Age:"+1"}, 
+{id:34,name:"A plush hot chocolate cup. It is light blue, covered in white frosting, and has a smiling face.",cartName:"Hot Chocolate Cup",Category:"Winter toys",Price:10.5,oldPrice:35,img:"https://i.postimg.cc/0y9T1QHT/hot-chocolate.jpg",Age:"+6m"}, 
+{id:35,name:"A stuffed penguin wearing a blue hat and standing on a blue skateboard.",cartName:"Penguin",Category:"Winter toys",Price:12,oldPrice:40,img:"https://i.postimg.cc/zfc6hkDS/penguin.jpg",Age:"+6m"}, 
+{id:36,name:"A fluffy snowman wearing a blue hat and scarf, with an orange nose and brown branch arms.",cartName:" Snowman",Category:"Winter toys",Price:12,oldPrice:45,img:"https://i.postimg.cc/634SfGyZ/snow-man.jpg",Age:"+6m"}, 
+{id:37,name:"Programmable robotic toys with gesture sensors and remote control, perfect as a birthday gift for children.",cartName:"Robot",Category:"Electronical toys",Price:51,oldPrice:102,img:"https://i.postimg.cc/vH5hMw16/hh.jpg",Age:"+6"}, 
+
+{id:38,name:"Alphabet & Number Play Mat: Each square contains an English alphabet letter or number and is used as a safe floor in playrooms and nurseries, helping children learn.",cartName:"Alphabet & Number Play Mat",Category:"Educational toys",Price:48.80,oldPrice:97.65,img:"https://i.postimg.cc/76tCL0GV/abc-mat.jpg",Age:"+1"}, 
+{id:39,name:"A 20-piece snowman kit for building and decorating a snowman.",cartName:"Snowman Kit",Category:"Winter toys",Price:149,oldPrice:180,img:"https://i.postimg.cc/J7kJh5wX/d.jpg",Age:"+6"}, 
+{id:40,name:"A 4-piece kids jump ring and rope set with a soft, segmented rope and a removable exercise hoop. Adjustable size for children and adults, perfect for sports, exercise, and play.",cartName:"Jump Rope & Hoop",Category:"Motion toys",Price:34.50,oldPrice:69,img:"https://i.postimg.cc/4N4SW-3CT/jump-rope.jpg",Age:"+6"}, 
+{id:41,name:"A Santa pop it. A fast-paced, challenging stress-relieving game suitable for both children and adults. It features bubble buttons that light up and make sounds when pressed.",cartName:"Santa Pop it",Category:"Winter toys",Price:18.9,oldPrice:63,img:"https://i.postimg.cc/Pxk6YXb3/winter.jpg",Age:"+1"}, 
+
+{id:42,name:"A small Santa pop it handbag made of silicone, which functions as a stress-relieving pop toy.",cartName:"Santa Pop it Handbag",Category:"Winter toys",Price:10.8,oldPrice:36,img:"https://i.postimg.cc/m207tdy1/winterr.jpg",Age:"+3"}, 
+{id:43,name:"Two inflatable snow tubes, one dark blue and the other light blue, with white snowflake designs on them.",cartName:"Snow Tubes",Category:"Winter toys",Price:45,oldPrice:150,img:"https://i.postimg.cc/K8BBLn9y/wintter.jpg",Age:"+6"}, 
+{id:44,name:"Hobscotch Squares Large 15 Inch Set with Connector for Indoor and Outdoor Use for Conditioning and Agility Training - Axifor.",cartName:"Hobscotch Squares",Category:"Motion toys",Price:15,oldPrice:30,img:"https://i.postimg.cc/bNdRGScY/motion.jpg",Age:"+6"}, 
+{id:45,name:"A colorful snow play set containing various tools like snowball makers, a shovel, a bucket, and molds.",cartName:"Snowball Maker Tools",Category:"Winter toys",Price:36,oldPrice:120,img:"https://i.postimg.cc/0ywdngNg/snow-toy.jpg",Age:"+3"}, 
+{id:46,name:"A 100-piece magnetic tile race track play set, a STEM building and learning toy for children.",cartName:"Magnetic Tile Race Track",Category:"Educational toys",Price:188,oldPrice:376,img:"https://i.postimg.cc/59s3Nqrh/magnetic.jpg",Age:"+3"}, 
+
+{id:47,name:"A craft kit for making snowmen. The box contains everything needed to assemble 24 snowmen, as white pieces, hats, gloves, and glue sticks.",cartName:"Winter Craft Kit",Category:"Winter toys",Price:32.7,oldPrice:109,img:"https://i.postimg.cc/0QdVCTc2/snow.jpg",Age:"+6"}, 
+{id:48,name:"Black electronic piano keyboard with microphone and power adapter.",cartName:"Piano",Category:"Electronical toys",Price:250,oldPrice:500,img:"https://i.postimg.cc/Dzq240cL/piano.png",Age:"+6"}, 
+{id:49,name:"A blue elephant toy, which is a wooden activity cube full of fun features.",cartName:"Classic Elephant Activity Toy,",Category:"Creative toys",Price:54.50,oldPrice:109,img:"https://i.postimg.cc/5ysW-VQKg/elephaant.png",Age:"+1"}, 
+{id:50,name:"A pretty camera shaped like unicorn with purple color use to take photos.",cartName:"Electronic Purple camera",Category:"Electronical toys",Price:109.50,oldPrice:219,img:"https://i.postimg.cc/y6MNkhVv/camera.jpg",Age:"+6"}, 
+
+{id:51,name:"Soft alphabet cards that help children learn the English alphabet and come with a small cloth bag for easy storage.",cartName:"Alphabet Cards",Category:"Educational toys",Price: 48.80,oldPrice:97.65,img:"https://i.postimg.cc/ZnqCrYGL/educat.jpg",Age:"+3"}, 
+{id:52,name:"Green children's smartwatch with a built-in camera and some games. Helps children learn to tell time and take pictures.",cartName:"Green Smartwatch Toy ",Category:"Electronical toys",Price:19.50,oldPrice:39,img:"https://i.postimg.cc/v83V7wCn/watch.jpg",Age:"+6"}, 
+
+ ];
+function applySeeMoreToElement(h3) {
+  const text = h3.textContent.trim();
+  if(text.length > 35) {
+    const shortText = text.substring(0,35) + "...";
+
+    h3.innerHTML = `
+      <span class="short-text">${shortText}</span>
+      <span class="full-text" style="display:none;">${text}</span>
+      <a href="#" class="see-more" style="color:#007BFF; cursor:pointer;">See More</a>
+    `;
+  }
+}
+
+
+const observer = new MutationObserver(mutations => {
+  mutations.forEach(mutation => {
+    mutation.addedNodes.forEach(node => {
+      if(node.nodeType === 1) {
+        node.querySelectorAll('h3').forEach(h3 => applySeeMoreToElement(h3));
+      }
+    });
+  });
+});
+
+observer.observe(document.body, { childList: true, subtree: true });
+
+
+document.addEventListener('click', function(e){
+  if(e.target.classList.contains('see-more')){
+    e.preventDefault();
+    const shortText = e.target.parentElement.querySelector('.short-text');
+    const fullText = e.target.parentElement.querySelector('.full-text');
+
+    if(fullText.style.display === 'none' || fullText.style.display === "") {
+      fullText.style.display = 'inline';
+      shortText.style.display = 'none';
+      e.target.textContent = 'See Less';
+    } else {
+      fullText.style.display = 'none';
+      shortText.style.display = 'inline';
+      e.target.textContent = 'See More';
+    }
+  }
+});
+
+
+// STATE
+let cart = [];
+const wishlist = [];
+// DOM
+const grid=document.getElementById("productGrid");
+const searchInput=document.getElementById("search");
+const CategorySelect=document.getElementById("Category");
+const chips=document.querySelectorAll(".chip");
+const cartDrawer=document.getElementById("cartDrawer");
+const cartItems=document.getElementById("cartItems");
+const CartTotal=document.getElementById("CartTotal");
+const cartCount=document.getElementById("CartCount");
+const openCartBtn=document.getElementById("openCart");
+const closeCartBtn=document.getElementById("closeCart");
+const checkoutBtn=document.getElementById("checkoutBtn");
+const wishlistDrawer=document.getElementById("wishlistDrawer");
+const wishlistItems=document.getElementById("wishlistItems");
+const WishlistCount=document.getElementById("WishlistCount");
+const openWishlistBtn=document.getElementById("openWishlist");
+const closeWishlistBtn=document.getElementById("closeWishlist");
+
+function formatPrice(p){return p+"SAR";}
+
+// RENDER PRODUCTS
+function renderProducts(list){
+grid.innerHTML="";
+if(!list || list.length===0){grid.innerHTML=`<div class="card" style="grid-column:1/-1;text-align:center">No results found!</div>`;return;}
+list.forEach(p=>{
+const card=document.createElement("div");
+card.className="card";
+card.innerHTML=`
+<div class="thumb"><img src="${p.img}" class="item-img" alt="${p.name}"></div>
+${p.Category === "Winter toys" ? `<div class="special-toy">Special Toy</div>` :""}
+<h3>${p.name}</h3>
+<div class="meta">Category: ${p.Category} • Age: ${p.Age}</div>
+<div class="Price-row">
+<span class="old-price">SAR ${p.oldPrice}</span>
+<span class="new-price">SAR ${p.Price}</span>
+<button class="add" data-id="SAR ${p.id}">Add to Cart</button>
+</div>
+`;
+const heart=document.createElement("button");
+heart.className="wishlist-btn";
+heart.setAttribute("data-id",p.id);
+heart.innerText="♡";
+if(wishlist.indexOf(p.id)!==-1) heart.classList.add("active");
+card.appendChild(heart);
+grid.appendChild(card);
+
+heart.addEventListener("click",()=>{toggleWishlist(p.id,heart);});
+card.querySelector(".add").addEventListener("click",()=>{addToCart(p);});
+});
+}
+
+
+renderProducts(PRODUCTS);
+// CART FUNCTIONS
+function addToCart(item){
+const existing=cart.find(c=>c.id===item.id);
+if(existing){existing.qty=(existing.qty||1)+1;}else{cart.push({...item,qty:1});}
+cartCount.innerText=cart.reduce((sum,p)=>sum+(p.qty||1),0);
+renderCart();
+}
+
+function renderCart(){
+  cartItems.innerHTML="";
+  cart.forEach(p=>{
+    const div=document.createElement("div");
+    div.className="drawer-item";
+    div.innerHTML=`
+      <img src="${p.img}" alt="${p.cartName}">
+      <div class="info">
+        <p>${p.cartName}</p> 
+        <p>${formatPrice(p.Price)}</p>
+        <div style="display:flex;gap:8px;align-items:center;margin-top:4px;">
+          <button class="qty-btn dec-btn" data-id="${p.id}">-</button>
+          <span class="qty-display" id="qty-${p.id}">${p.qty}</span>
+          <button class="qty-btn inc-btn" data-id="${p.id}">+</button>
+          <button class="remove-btn" data-id="${p.id}">Remove</button>
+        </div>
+      </div>
+    `;
+    cartItems.appendChild(div);
+
+    div.querySelector(".inc-btn").addEventListener("click",()=>{
+      p.qty=(p.qty||1)+1;
+      document.getElementById(`qty-${p.id}`).textContent=p.qty;
+      updateCartTotal();
+    });
+    div.querySelector(".dec-btn").addEventListener("click",()=>{
+      p.qty=Math.max((p.qty||1)-1,1);
+      document.getElementById(`qty-${p.id}`).textContent=p.qty;
+      updateCartTotal();
+    });
+    div.querySelector(".remove-btn").addEventListener("click",()=>{
+      cart=cart.filter(i=>i.id!==p.id);
+      updateCartTotal();
+      renderCart();
+    });
+  });
+  updateCartTotal();
+  cartCount.textContent=cart.reduce((sum,p)=>sum+(p.qty||1),0);
+}
+
+function updateCartTotal(){
+const total=cart.reduce((sum,p)=>sum+(p.Price*(p.qty||1)),0);
+CartTotal.textContent=total+"SAR";
+}
+
+function toggleWishlist(itemId,btn){
+const index=wishlist.indexOf(itemId);
+if(index>-1){wishlist.splice(index,1);btn.classList.remove("active");}else{wishlist.push(itemId);btn.classList.add("active");}
+WishlistCount.innerText=wishlist.length;
+renderWishlist();
+}
+
+function renderWishlist(){
+  wishlistItems.innerHTML="";
+  if(wishlist.length===0){
+    wishlistItems.innerHTML="<div>Your wishlist is empty</div>";
+    return;
+  }
+  wishlist.forEach(id=>{
+    const item = PRODUCTS.find(p=>p.id===id);
+    if(item){
+      const div=document.createElement("div");
+      div.className="drawer-item";
+      div.innerHTML=`
+        <img src="${item.img}" alt="${item.cartName}">
+        <div class="info">
+          <p>${item.cartName}</p>  
+          <p>${formatPrice(item.Price)}</p>
+          <button data-id="${id}" class="rm-btn remove-btn">Remove</button>
+        </div>
+      `;
+      wishlistItems.appendChild(div);
+      div.querySelector(".rm-btn").addEventListener("click", ()=>{
+        toggleWishlist(id, document.querySelector(`.wishlist-btn[data-id='${id}']`));
+      });
+    }
+  });
+}
+
+
+ // FILTERS & SEARCH
+  function applyFilters(){
+    const term = (searchInput?.value || "").trim().toLowerCase();
+    const drop = (CategorySelect?.value || "All");
+    const chipActive = document.querySelector(".chip.active")?.dataset.filter ?? "All";
+    const cat = drop === "All" ? chipActive : drop;
+
+    let list = PRODUCTS.slice();
+    if(cat && cat !== "All") list = list.filter(p=>p.Category === cat);
+    if(term) list = list.filter(p=>p.name.toLowerCase().includes(term));
+    renderProducts(list);
+  }
+
+// EVENTS
+  chips.forEach(c=>{
+    c.addEventListener("click",()=>{
+      chips.forEach(x=>x.classList.remove("active"));
+      c.classList.add("active");
+      if(CategorySelect) CategorySelect.value = c.dataset.filter;
+      applyFilters();
+    });
+  });
+  searchInput && searchInput.addEventListener("input", applyFilters);
+  CategorySelect && CategorySelect.addEventListener("change", ()=>{
+    const val = CategorySelect.value;
+    chips.forEach(c => c.classList.remove("active"));
+    const activeChip = Array.from(chips).find(c => c.dataset.filter === val);
+    if(activeChip) activeChip.classList.add("active");
+    applyFilters();
+  });
+
+chips.forEach(c=>{c.addEventListener("click",()=>{
+chips.forEach(x=>x.classList.remove("active"));c.classList.add("active");
+CategorySelect.value=c.dataset.filter;
+applyFilters();
+});});
+searchInput.addEventListener("input",applyFilters);
+CategorySelect.addEventListener("change",applyFilters);
+
+openCartBtn.addEventListener("click",()=>{cartDrawer.classList.add("open");cartDrawer.setAttribute("aria-hidden","false");});
+closeCartBtn.addEventListener("click",()=>{cartDrawer.classList.remove("open");cartDrawer.setAttribute("aria-hidden","true");});
+
+openWishlistBtn.addEventListener("click",()=>{wishlistDrawer.classList.add("open");wishlistDrawer.setAttribute("aria-hidden","false");});
+closeWishlistBtn.addEventListener("click",()=>{wishlistDrawer.classList.remove("open");wishlistDrawer.setAttribute("aria-hidden","true");});
+
+checkoutBtn.addEventListener("click",()=>{alert("Checkout Successful!");cart=[];renderCart();});
+
+renderProducts(PRODUCTS);
+
+  document.getElementById("exploreBtn").onclick = ()=>{
+    const g = document.querySelector(".grid");
+    if(g) window.scrollTo({top: g.offsetTop - 80, behavior:"smooth"});
+  };
+  document.getElementById("dealBtn").onclick = ()=>{
+    const discountCat = "Creative";
+    PRODUCTS.forEach(p=>{
+      if(p.Category === discountCat) p.Price = Math.round(p.Price * 0.9);
+    });
+    applyFilters();
+    alert("Today's offer is active: 10% discount on creative toys!");
+  };
+</script>
+
+</script>
+
+</body>
+</html>
